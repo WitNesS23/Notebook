@@ -1,8 +1,6 @@
 # background 属性
 
 ## 总的来说
-
-
 在目前的css中，一共有如下几个关于`background`的属性
 
 |Attribute|Description|CSS|
@@ -18,3 +16,5 @@
 |background-size|set the size of the **background-image**|3|
 
 从上面的表格中，可以清楚地看到`CSS3`新添加的三个属性：`background-clip`、`background-origin`、`background-size`。下面主要就联系着这三个新属性完整理解下`background`。
+
+## 简单的老朋友们
