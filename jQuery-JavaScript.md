@@ -25,3 +25,33 @@ $(".exp").eq(0) == $(document.querySelector(".exp"));
 `var $\$ = jQuery;` ：这样`$\$`就完全体现了原来$函数的功能。
 
 ## 选择器
+
+## 元素遍历操作 - Traversing
+
+#### add()
+
+扩展选择器的范围
+
+*参数： jQuery对象，element原生对象， 选择器， 带上下文的选择器， 原生HTML代码*
+```JavaScript
+  $("li").add("div").css("background", "#999").end(); // this end() return the $("li")
+  var pdiv = $( "p" ); pdiv.add( "div" ); // WRONG, pdiv will not change
+  $( "li" ).add( "<p id='new'>new paragraph</p>" ).css( "background-color", "red" );
+  // although 'p' element has the bg-color but it need to be added to the document
+```
+
+#### addBack()
+
+将上一次选择器变动的结果添加到选择结果中
+
+*参数： 选择器*
+
+**tips: understand the realization of this method and the '.end()'**
+```JavaScript
+// jQuery objects maintain an internal stack that keeps track of changes to the matched set of elements.
+// When one of the DOM traversal methods is called, the new set of elements is pushed onto the stack.
+// .end() method also use this internal stack. +You can't use it for many times.
+$( "li.third-item" ).nextAll().addBack()
+  .css( "background-color", "red" );
+// .css() method will influence {[<li.third-item>,<li>,<li>,... ]}
+```
