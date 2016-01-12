@@ -1,6 +1,7 @@
 # background 属性
 
 ## 总的来说
+---
 在目前的css中，一共有如下几个关于`background`的属性
 
 |Attribute|Description|CSS|
@@ -18,6 +19,7 @@
 从上面的表格中，可以清楚地看到`CSS3`新添加的三个属性：`background-clip`、`background-origin`、`background-size`。下面主要就联系着这三个新属性完整理解下`background`。
 
 ## 不简单的老朋友们
+---
 `background`这个标签中的CSS1部分，太熟悉太常用了，下面是一些容易被忽略的点：
 - 背景图片默认以原尺寸填充，**填充起点**默认是盒模型的`padding`区域，不同于`background-color`的默认填充区域是border区域；
 ![简单例子]()
@@ -34,6 +36,7 @@
 
 
 ## 认识下新朋友
+---
 
 ### 背景图片的绘制起点 background-origin
 
@@ -50,20 +53,52 @@
 **ie9+**和现代浏览器都支持，但是使用还需要加上前缀
 
 ```CSS
-/*old Webkit and Gecko*/
+/* old Webkit and Gecko */
 -moz-background-origin: padding || border|| content;
 -webkit-background-origin: padding || border|| content;
-/*new Webkit and Gecko*/
+/* new Webkit and Gecko */
 -moz-background-origin: padding-box || border-box || content-box;
 -webkit-background-origin: padding-box || border-box || content-box;
 background-origin: padding-box || border-box || content-box; /*w3c标准*/
 ```
 
-##### Demos:
 
 ### 背景的裁切起点 background-clip
 
 ##### `background-clip` 有三个取值：
-- `border`：（默认值）仅在`border`区域显示背景（边框外边缘）；
-- `padding-box`：仅在`padding`区域显示背景（边框内边缘）；
-- `content-box`：仅在内容区域显示背景（从padding内边缘）；
+- `border`：仅在`border`区域显示背景（边框外边缘内部）；
+- `padding-box`：仅在`padding`区域显示背景（边框内边缘内部）；
+- `content-box`：仅在内容区域显示背景（从padding内边缘内部）；
+
+### 背景的尺寸与缩放 background-size
+
+`background-size`可以用来指定背景图片的尺寸，可以控制背景图片在水平和垂直两个方向上面的缩放，也可以控制图片拉伸覆盖背景区域的方式。在CSS3的三个新属性中，这个属性的使用率是比较高的。
+
+##### background-size 的取值
+```
+[ <length> | <percentage> | auto ]{1,2} | cover | contain
+/* 关键字: 宽高同时有效果（cover / contain） */
+/* 一个值: 这个值指定图片的宽度，图片的高度隐式的为auto */
+/* 两个值: 第一个指定图片的宽度，第二个值指定图片的高度 */
+```
+> length
+>
+    指定背景图片大小，不能是负值
+>
+> percentage 百分比
+>
+    指定图片区域相对背景区（background positioning area）的百分比。背景区由`background-origin`设置，默认为盒模型的内容区与内边距。
+    如果`attachment`为`fixed`，背景区为浏览器可视区（可视口），不包括滚动条。
+> cover
+>
+    缩放背景图以完全覆盖背景区，可能出现背景图片被截断，显示不完整
+>
+> contain
+>
+    缩放背景图片已完全装入背景区，可能背景区没有完全被背景图片覆盖，出现空白（或者`background-color`）
+>
+>
+>
+>
+>
+>

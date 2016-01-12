@@ -1,6 +1,7 @@
 # jQuery 学习笔记
 
 ## 思考与基础核心
+---
 
 ### 加载模式
 
@@ -25,10 +26,12 @@ $(".exp").eq(0) == $(document.querySelector(".exp"));
 `var $\$ = jQuery;` ：这样`$\$`就完全体现了原来$函数的功能。
 
 ## 选择器
+---
 
 ## 元素遍历操作 - Traversing
+---
 
-#### add()
+#### .add()
 
 扩展选择器的范围
 
@@ -40,7 +43,7 @@ $(".exp").eq(0) == $(document.querySelector(".exp"));
   // although 'p' element has the bg-color but it need to be added to the document
 ```
 
-#### addBack()
+#### .addBack()
 
 将上一次选择器变动的结果添加到选择结果中
 
@@ -55,3 +58,11 @@ $( "li.third-item" ).nextAll().addBack()
   .css( "background-color", "red" );
 // .css() method will influence {[<li.third-item>,<li>,<li>,... ]}
 ```
+
+#### .addSelf()
+被弃用，现在作为`.addBack()`函数的别名。`.addBack()`只有在`jQuery 1.8`之后使用。
+
+#### .children()
+获取所有对象列表中子代元素的满足筛选条件的对象列表
+**tips: different from the `.find()`, `.children()` only travels a single level down the DOM tree while `.find()` can travels down multiple levels.**
+**tips: like the most others jQuery methods, `.children` does not return text nodes; to get *all* children including text and comment nodes, use `.contents()`**
