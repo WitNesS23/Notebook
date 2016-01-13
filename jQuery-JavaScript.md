@@ -28,6 +28,26 @@ $(".exp").eq(0) == $(document.querySelector(".exp"));
 ## 选择器
 ---
 
+## 事件详解
+---
+#### 基础事件
+##### `event`详解
+|属性名|描述|
+|:--|:--|
+|`type`|获取这个事件的事件类型的字符串，例如：click|
+|`target`|获取**触发**事件的DOM元素|
+|`dat`|获取事件调用时的额外数据|
+|`relatedTarget`|获取移入移除目标点离开或进入（最相邻）的那个DOM元素|
+|`currentTarget`|获取冒泡前出触发的DOM元素，等同于`this`|
+|`pageX/pageY`|获取相对于页面原点（最左上角）的水平/垂直坐标|
+|`screenX/screenY`|获取显示器屏幕位置的水平/垂直坐标(非 jQuery 封装)|
+|`clientX/clientY`|获取相对于页面视口的水平/垂直坐标(非 jQuery 封装)|
+|`result`|获取上一个相同事件的返回值|
+|`timeStamp`|获取事件触发的时间戳|
+|`which`|获取鼠标的左中右键（1,2,3），或获取键盘按键|
+|`altKey/shiftKey/ctrlKey`|获取是否按下了alt、shift、ctrl(非 jQuery 封装)|
+
+
 ## 元素遍历操作 - Traversing
 ---
 
@@ -64,5 +84,7 @@ $( "li.third-item" ).nextAll().addBack()
 
 #### .children()
 获取所有对象列表中子代元素的满足筛选条件的对象列表
+
 **tips: different from the `.find()`, `.children()` only travels a single level down the DOM tree while `.find()` can travels down multiple levels.**
+
 **tips: like the most others jQuery methods, `.children` does not return text nodes; to get *all* children including text and comment nodes, use `.contents()`**
