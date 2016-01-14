@@ -83,8 +83,21 @@ $( "li.third-item" ).nextAll().addBack()
 被弃用，现在作为`.addBack()`函数的别名。`.addBack()`只有在`jQuery 1.8`之后使用。
 
 #### .children()
-获取所有对象列表中子代元素的满足筛选条件的对象列表
+获取所有对象列表中**子代元素**的满足筛选条件的对象列表
 
 **tips: different from the `.find()`, `.children()` only travels a single level down the DOM tree while `.find()` can travels down multiple levels.**
 
+*`.children()`不同于`.find()`只遍历子代元素*
+
 **tips: like the most others jQuery methods, `.children` does not return text nodes; to get *all* children including text and comment nodes, use `.contents()`**
+
+*`.content()`返回`.children()`的超集，还包含文本结点和注释结点*
+
+#### .closest()
+从**自身开始**向DOM树上面的祖先元素遍历，返回第一个满足筛选条件的jQuery对象
+
+|`.closest()`|`.parents()`|
+|:--|:--|
+|Begins with the current element|Begins with the parent element|
+|向上遍历直到||
+|||

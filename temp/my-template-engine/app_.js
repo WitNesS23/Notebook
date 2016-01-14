@@ -49,3 +49,6 @@ function tplEnginee(testStr, data){
 }
 
 $("#other").html(tplEnginee(testStr, data));
+
+// 按需加载
+// 友好化代码提示错误
