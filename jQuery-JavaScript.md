@@ -94,10 +94,22 @@ $( "li.third-item" ).nextAll().addBack()
 *`.content()`返回`.children()`的超集，还包含文本结点和注释结点*
 
 #### .closest()
-从**自身开始**向DOM树上面的祖先元素遍历，返回第一个满足筛选条件的jQuery对象
+从**自身开始**向DOM树上面的祖先元素遍历，返回**第一个**满足筛选条件的jQuery对象
 
 |`.closest()`|`.parents()`|
 |:--|:--|
-|Begins with the current element|Begins with the parent element|
-|向上遍历直到||
-|||
+|Begins with the *current element*|Begins with the parent element|
+|向上遍历直到找到符合所提供选择器的元素|首先遍历该元素的所有祖先元素并且保存在枚临时集合中，然后再从中筛选出满足提供条件的新集合|
+|返回*0或者1*个对象，返回顺序和选择器顺序*相反*|返回*0或者多个对象*，顺序*相同*|
+
+#### .contents()
+- 拓展了`.children()`所选择的范围，包括注释元素和文本元素
+- 和`children()`元素不同的是，不能传递参数
+> bugger: different between of the `.contents()` and `.text()`
+
+#### .each()
+- 迭代选择器获取的元素集合，每个元素执行指定的函数
+- 迭代的函数默认接受的参数: `index` & `Element`(=this)
+- 可以使用`return false`提前终止迭代，后续元素将不执行回调函数
+
+#### .end()
