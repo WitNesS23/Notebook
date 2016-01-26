@@ -1,0 +1,140 @@
+# 修改DOM元素
+[ilya Kantor](http://javascript.info/users/ilya-kantor)
+1. [创建结点]()
+2. [添加结点]()
+3. [移除结点]()
+4. [练习与实例]()
+5. [总结]()
+
+DOM结构的变化是动态页面的本质.通过下面即将描述的方法,使得在线(*译者:*[on-the-fly](https://www.zhihu.com/question/21136587))构造新的页面结构同时填充它们变成可能.
+
+在之前描述的DOM操作方法都是定义在在[DOM一级规范]()中.
+
+## 创建结点
+
+这些就是在DOM中创建新结点的方法.
+
+#### `document.createElement(tag)`
+创建一个新的**元素类型**的结点,譬如一枚`div`结点
+
+  `var div = document.createElement('div')`
+#### `document.createTextNode(text)`
+创建一个新的**文本类型**的结点,譬如内容是`Ronbin was here`
+
+  `var textEle = document.createTextNode('Ronbin was here')`
+
+`createElement`是最常用的方法之一,不过`createTextNode`也很不错.`createTextNode`创建的的文本类型的结点可以被添加到其他的结点中(*译者:这里没有讲清楚*).
+
+在多数流行浏览器中,对于一个空节点,创建一个新的文本结点然后填充要比直接修改`innerHTML`属性操作**快得多**.
+
+但是`innerHTML`操作更加简单同时支持在内容中**嵌套标签**,所以它们都找到了自己的用武之地.
+
+### 克隆结点
+结点同样可以被克隆.
+
+#### `elem.cloneNode(true)`
+深度克隆一个结点,克隆这个节点本生还有它的**所有后代结点**.
+
+#### `elem.cloneNode(false)`
+克隆一个节点本身以及它的**特性(结点)**,但是不克隆它的后代结点.
+
+
+## 添加结点
+
+当你想操作某个结点,你需要调用它的父代结点的对应方法.
+
+#### `parentElem.appendChild(ele)`
+将`elem`结点添加到`parentElem`的子代结点中
+
+  下面的例子演示了如何创建一个结点同时将它添加到`BODY`(结点)的子结点中
+  ```HTML
+  <div>
+    ...
+  </div>
+  <script>
+    var div = document.body.children[0]
+
+    var span = document.createElement('span')
+    span.innerHTML = 'A new span!'
+    div.appendChild(span)
+  </script>
+  ```
+**值得注意的是，新添加结点的位置是`parentElem`子代结点中的最后**
+
+> 思考: 对于一个空的DOM结点`node`,下面的两种操作有什么区别?
+> `elem.appendChild(document.createTextNode(text))` & `elem.innerHTML = text`
+> 解决:
+> `createTextNode` escapes node content(*译者: 看不懂啊看不懂*)
+> 比较下面两个例子
+> `createTextNode` 使得文本内容变成 `<b>tag</b>`
+
+```HTML
+  <div></div>
+  <script>
+    var text = '<b>tag</b>'
+
+    var elem = document.body.children[0]
+    elem.appendChild(document.createTextNode(text))
+  </script>
+```
+> `innerHTML`将*html结构*更改成`<b>tag</b>`
+
+```HTML
+  <div></div>
+  <script>
+    var text = '<b>tag</b>'
+
+    var elem = document.body.children[0]
+    elem.innerHTML = text
+  </script>
+```
+
+#### `parentElem.insertBefore(elem, nextSibling)`
+将`elem`结点添加到`parentElem`的子代结点中的`elementSibling`结点之前
+
+下面的例子中将一个新结点添加到第一个子代结点之前:
+```HTML
+<div>
+  ...
+</div>
+<script>
+  var div = document.body.children[0]
+
+  var span = document.createElement('span')
+  span.innerHTML = 'A new span'
+  div.insertBefore(span, div.firstChild)
+</script>
+```
+注意: 使用`insertBefore`方法时传递第二个参数是`null`的情况下,将和`appendChild`执行同样的操作
+
+``` JavaScript
+  elem.insertBefore(newElem, null) // 和下面的方法效果一模一样
+  elem.appendChild(newElem)
+```
+**所有的添加的结点的操作返回值都是被添加的结点**
+
+## 移除结点
+有以下两种主要的方式从DOM中移除结点
+
+#### `parentElem.removeChild(elem)`
+将`elem`结点从`parentElem`的子代结点中移除
+
+#### `parentElem.replaceChild(elem, currentElem)`
+用`elem`结点替换`parentElem`子结点中的`currentElem`
+
+**这两者都返回被移除的结点,这些被移除的结点接下来都可能再次被添加到DOM中去**
+
+> 在你需要移动某个节点的时候,首先要做的事不一定是从父辈结点中移除这个结点
+> `elem.appendChild/insertBefore`**自动把**`elem`**从它之前的位置中移除了**
+> 下面的例子将最后一枚子代结点移动到了子代元素中的第一个
+
+```HTML
+  <div>First div</div>
+  <div>Last div</div>
+  <script>
+    var first = document.body.children[0]
+    var last = document.body.children[1]
+
+    document.body.insertBefore(last, first)
+  </script>
+```
