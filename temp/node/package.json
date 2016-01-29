@@ -1,0 +1,13 @@
+{
+  "name": "rem-format",
+  "version": "1.0.1",
+  "description": "you can format your responsive phone website depended on 'rem' by this",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["rem", "format", "rem-format"],
+  "author": "WitNesS23",
+  "bin": {"rem-format": "app.js"},
+  "license": "ISC"
+}
