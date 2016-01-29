@@ -1,10 +1,15 @@
 # 修改DOM元素
-[ilya Kantor](http://javascript.info/users/ilya-kantor)
-1. [创建节点](##1)
-2. [添加节点](## 添加节点)
-3. [移除节点](##3)
-4. [任务与实例](## 任务与实例)
-5. [总结](## 总结)
+本文原作者:[ilya Kantor](http://javascript.info/users/ilya-kantor)
+
+1. [创建节点](#user-content-1-创建节点)
+
+2. [添加节点](#user-content-添加节点)
+
+3. [移除节点](#user-content-3-移除节点)
+
+4. [任务与实例](#user-content-4-任务与实例)
+
+5. [总结](#user-content-5-总结)
 
 DOM结构的变化是动态页面的本质.通过下面即将描述的方法,使得在线(*译者:*[on-the-fly](https://www.zhihu.com/question/21136587))构造,修改页面结构变成可能.
 
