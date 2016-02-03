@@ -3,7 +3,7 @@
 
 1. [创建节点](#user-content-1-创建节点)
 
-2. [添加节点](#user-content-添加节点)
+2. [添加节点](#user-content-2-添加节点)
 
 3. [移除节点](#user-content-3-移除节点)
 
