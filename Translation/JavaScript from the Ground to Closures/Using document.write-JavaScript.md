@@ -90,7 +90,7 @@ document.documentElement.firstChild.appendChild(script)
 
 使用`DOM`添加的方式不会阻塞页面加载使得页面的加载速度变快,与此同时对于第三方库的引用更加安全.
 
-## 总结
+## 4 总结
 
 `document.write`或是`document.writeIn`允许我们直接向`HTML`输出一段文本.如果在页面加载结束之后被调用,这俩方法将会重绘整个页面.
 
