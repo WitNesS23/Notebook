@@ -1,13 +1,13 @@
 # 学会使用`document.write`
 本文原作者:[ilya Kantor](http://javascript.info/users/ilya-kantor)
 
-1. [`document.write`的工作原理](user-content-1-documentwrite的工作原理)
+1. [`document.write`的工作原理](#user-content-1-documentwrite的工作原理)
 
-2. [在"进行时"中使用](user-content-2-在进行时中使用)
+2. [在"进行时"中使用](#user-content-2-在进行时中使用)
 
-3. [最佳实践](user-content-3-最佳实践)
+3. [最佳实践](#user-content-3-最佳实践)
 
-4. [总结](user-content-4-总结)
+4. [总结](#user-content-4-总结)
 
 通过`document.write`方法,可以直接使页面输出一段字符串(*译者:可以理解成页面输出一句话*)
 
