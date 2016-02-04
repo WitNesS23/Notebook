@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-size: 14px;
+	font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+	color: #333;
+	word-wrap: break-word;	
+	-webkit-font-smoothing: antialiased;
+}
+
+.clearfix{
+    *zoom: 1;
+}
+
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+i, em{
+	font-style: normal;
+}
+
