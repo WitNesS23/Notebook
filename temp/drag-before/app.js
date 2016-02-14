@@ -23,6 +23,8 @@ $(".wrap>div>div").on("mousedown", function(e){
 	}
 }).on("mouseup", function(e){
 	if(chosen){
-		
+		$(this).siblings().each(function(index, ele){
+			
+		})
 	}
 });
