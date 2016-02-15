@@ -47,6 +47,18 @@ $(".exp").eq(0) == $(document.querySelector(".exp"));
 |`which`|获取鼠标的左中右键（1,2,3），或获取键盘按键|
 |`altKey/shiftKey/ctrlKey`|获取是否按下了alt、shift、ctrl(非 jQuery 封装)|
 
+## 奇奇怪怪
+
+#### 它们不一样!
+```JavaScript
+  var $one = $("body")
+  var $two = $("body")
+
+  $one == $two // false;
+  $one.children().end() == $two //false
+```
+> While getting jQuery objects via selector jQuery wraps the result everytimes in a new object. So the targetting objects are identical, the wrapping jQuery objects aren't. use xx[0] to compare.
+
 
 ## 元素遍历操作 - Traversing
 ---
@@ -113,3 +125,4 @@ $( "li.third-item" ).nextAll().addBack()
 - 可以使用`return false`提前终止迭代，后续元素将不执行回调函数
 
 #### .end()
+结束当前选择器链上面最近一次的**过滤**操作,然后返回之前状态的`jQuery`元素集合.
