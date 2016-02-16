@@ -90,6 +90,11 @@ $( "li.third-item" ).nextAll().addBack()
   .css( "background-color", "red" );
 // .css() method will influence {[<li.third-item>,<li>,<li>,... ]}
 ```
+简单翻译下:
+
+提示: 深入理解这个方法和`end()`方法的实现原理
+
+每个`jQuery`对象都会在**内部维护一个堆栈**,用于保存其中节点,在满足筛选条件的情况下变化的轨迹.当`DOM`遍历操作执行于这个对象上时,新的节点集合将被推入到堆栈中.
 
 #### .addSelf()
 被弃用，现在作为`.addBack()`函数的别名。`.addBack()`只有在`jQuery 1.8`之后使用。
@@ -126,3 +131,25 @@ $( "li.third-item" ).nextAll().addBack()
 
 #### .end()
 结束当前选择器链上面最近一次的**过滤**操作,然后返回之前状态的`jQuery`元素集合.
+
+**深入理解,在`jQuery`中,选择器的变化是维护在*链条*,*栈*中的**
+
+#### .eq()
+根据给定`index`获得其中某**一个`jQuery`元素对象**.
+
+区别于`.get()`和`[index]`的操作方式获取的是**DOM元素对象**.
+
+`index`计数从0开始,同时可以指定为负值.
+
+#### .filter()
+根据提供的选择器或者通过函数验证来减少结点集合.
+
+函数参数`(index, element)`.返回`true`(或者类`true`值)则通过验证.函数中的`this`指向当前元素`DOM`对象.
+
+#### .find()
+
+#### .parent()
+
+#### .parents()
+
+tips: dialog.js 可以使用 `.add()` 进行优化
